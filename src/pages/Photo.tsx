@@ -24,6 +24,7 @@ export default function Photo() {
 
   const handleClick = () => {
     setIsClick(true);
+    console.log(`isClick : `, isClick);
     setCount((count) => count + 1);
   };
 
