@@ -1,35 +1,64 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
+
+import SelectPhoto from "../component/select/SelectPhoto";
+import SelectColor from "../component/select/SelectColor";
+import Preview from "../component/select/Preview";
 
 export default function Select() {
+  const navigate = useNavigate();
+
   return (
     <Container>
-      <p>Select</p>
-      <MemoInput type="text" placeholder="응원 입력" />
+      <SelectWrapper>
+        <SelectPhoto />
+        <SelectColor />
+        <Preview />
+      </SelectWrapper>
+      <GotoResult onClick={() => navigate("/result")}>다운로드하기</GotoResult>
     </Container>
   );
 }
 
 const Container = styled.div`
+  cursor: url("/cursor.png"), pointer;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  width: 100vw;
+  height: 100vh;
 `;
-const MemoInput = styled.input`
-  padding: 10px;
-  width: 10rem;
-  height: 3rem;
+
+const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2.8125rem;
+
+  width: inherit;
+`;
+
+const GotoResult = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 360px;
+  height: 60px;
 
   font-size: 32px;
-  color: var(--gray-scale-100);
+  font-weight: 700;
+  color: var(--gr-100);
+  background-color: var(--pr-pink);
+  outline: none;
 
-  border: 3px solid var(--pr-pink);
-  background-color: transparent;
-  :focus {
-    outline: none;
-  }
-
-  ::placeholder {
-    color: #e0489a;
+  :hover {
+    transform: rotate(-2deg);
+    transition: all 0.2s ease-in-out;
   }
 `;

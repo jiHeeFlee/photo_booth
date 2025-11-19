@@ -1,10 +1,6 @@
 import { Outlet, useMatches } from "react-router-dom";
 import styled from "@emotion/styled";
 
-interface RouteHandle {
-  title?: string;
-}
-
 export default function App() {
   const matches = useMatches();
   const currentMatch = matches[matches.length - 1];
@@ -14,15 +10,9 @@ export default function App() {
     return null;
   }
 
-  const currentTitle =
-    (currentMatch.handle as RouteHandle).title || "PHOTO-BOOTH";
-
   return (
     <Container className="global-container">
-      <p>{currentTitle} 테스트 페이지</p>
-      <div className="outlet-wrapper">
-        <Outlet />
-      </div>
+      <Outlet />
     </Container>
   );
 }
@@ -32,6 +22,4 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: aquamarine;
 `;
