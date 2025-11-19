@@ -20,7 +20,9 @@ export default function SelectColor() {
   const handleClick = (state: string) => {
     setSelected(state);
     setState(state);
+    console.log(`selected : `, selected);
   };
+  console.log(`state : `, state);
 
   return (
     <Container>
